@@ -5,8 +5,10 @@
         "dockerfile": "Dockerfile"
     },
     "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": [],
+        "ghcr.io/devcontainers/features/git:1": [],
         "ghcr.io/devcontainers-extra/features/tmux-apt-get:1": [],
         "ghcr.io/devcontainers-extra/features/neovim-apt-get:1": []
     },
-    "postCreateCommand": "chmod +x script/setup && ./script/setup"
+    "postCreateCommand": "./script/setup"
 }
