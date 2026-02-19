@@ -4,8 +4,12 @@
         "context": "..",
         "dockerfile": "Dockerfile"
     },
-    "remoteUser": "root",
+    "remoteUser": "vscode",
+    "mounts": [
+        "source=/home/nate/.ssh/agent,target=/ssh-agent-dir,type=bind"
+    ],
     "postCreateCommand": "./.devcontainer/setup",
+    "postStartCommand": "echo 'export SSH_AUTH_SOCK=$(ls /ssh-agent-dir/*.agent.* | head -1)' >> ~/.bashrc",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -20,7 +24,9 @@
                 "ms-toolsai.vscode-jupyter-powertoys"
             ],
             "settings": {
-                "python.defaultInterpreterPath": "/bin/python3"
+                "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+                "workbench.colorTheme": "Default Dark Modern",
+                "workbench.sideBar.location": "right"
             }
         }
     }
